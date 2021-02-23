@@ -1,8 +1,32 @@
-let url = 'https://jsonplaceholder.typicode.com/users';
+data = [];
+loaded = false;
 
-fetch(url)
-.then(res => res.json())
-.then((out) => {
-  console.log('Checkout this JSON! ', out);
+const load =  async () => {
+  let result = await fetch('https://jsonplaceholder.typicode.com/users')
+  let preArray = await result.json()
+  preArray.forEach(item => {
+    data.push(item);
 })
-.catch(err => { throw err });
+  loaded = true;
+}
+
+async function toAdd() {
+  if (!loaded){
+   load();
+  }
+
+  // div
+  let row= document.createElement('div');
+  // div classlist row
+  row.classList.add('row');
+  
+  
+
+data.forEach((user) => {
+
+
+});
+
+}
+
+toAdd();
